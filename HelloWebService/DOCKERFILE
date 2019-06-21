@@ -1,0 +1,16 @@
+#there is an image on DockerHub to execute GO Applications
+FROM golang:1.11
+
+LABEL maintainer="Ernesto"
+
+WORKDIR $GOPATH/src/app/HelloWebService/
+
+COPY . .
+
+RUN go get -d -v ./...
+
+RUN go install -v ./...
+
+EXPOSE 6060
+
+CMD HelloWebService
